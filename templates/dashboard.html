@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <div class="announcement-bar">
+        <p>
+            {{ announcement.message }}
+            <a href="{{ announcement.link_url }}">{{ announcement.link_text }}</a>
+        </p>
+    </div>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar__header">
+                <h2 class="sidebar__logo">StyleFix</h2>
+            </div>
+            <nav class="sidebar__nav">
+                <a href="#" class="nav-link nav-link--active">Overview</a>
+                <a href="#" class="nav-link">Analytics</a>
+                <a href="#" class="nav-link">Reports</a>
+                <a href="#" class="nav-link">Users</a>
+                <a href="#" class="nav-link">Settings</a>
+            </nav>
+        </aside>
+
+        <main id="content" class="main-content">
+            <header class="header">
+                <button class="header__menu-btn" data-action="toggle-sidebar">&#9776;</button>
+                <h1 class="header__title">Overview</h1>
+                <div class="header__actions">
+                    <button class="btn btn--primary" data-action="show-toast">Notify</button>
+                    <button class="btn btn--secondary" data-action="open-modal">Details</button>
+                </div>
+            </header>
+
+            <div class="content-sections">
+                <section class="metrics-section">
+                    <h2 class="section__title">{{ sections.metrics.title }}</h2>
+                    <div class="dashboard-grid">
+                        {% for card in metrics %}
+                        <div class="card">
+                            <h3 class="card__title">{{ card.title }}</h3>
+                            <p class="card__value">{{ card.value }}</p>
+                            <span class="card__trend card__trend--{{ card.trend_dir }}">
+                                {{ card.trend_icon }} {{ card.trend }}
+                            </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <section class="performance-section">
+                    <h2 class="section__title">{{ sections.performance.title }}</h2>
+                    <div class="dashboard-grid">
+                        {% for card in performance %}
+                        <div class="card">
+                            <h3 class="card__title">{{ card.title }}</h3>
+                            <p class="card__value">{{ card.value }}</p>
+                            <div class="card__body">{{ card.description }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <section class="activity-section">
+                    <h2 class="section__title">{{ sections.activity.title }}</h2>
+                    <div class="dashboard-grid">
+                        {% for item in activities %}
+                        <div class="card">
+                            <h3 class="card__title">{{ item.title }}</h3>
+                            <div class="card__body">{{ item.description }}</div>
+                            <div class="card__footer">
+                                <span class="card__link">{{ item.time }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <div class="modal-overlay" id="detail-modal">
+            <div class="modal">
+                <div class="modal__header">
+                    <h2 class="modal__title">Dashboard Details</h2>
+                    <button class="modal__close" data-action="close-modal">&times;</button>
+                </div>
+                <div class="modal__body">
+                    <p>This view shows detailed metrics and analytics for the selected
+                    time period. Use the controls above to adjust the date range and
+                    apply filters.</p>
+                    <p>Export options and scheduled reports are available in the
+                    Settings section.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast-container" id="toast-container"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

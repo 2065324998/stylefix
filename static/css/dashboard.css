@@ -1,0 +1,60 @@
+/* Dashboard theme — section-specific color overrides
+ *
+ * Each dashboard section has its own accent color for card titles
+ * and interactive elements, providing visual distinction between
+ * metrics, performance, and activity sections.
+ */
+
+/* --- Metrics section (Blue) --- */
+
+.metrics-section .card .card__title {
+    color: #1a73e8;
+}
+
+.metrics-section .card .card__link {
+    color: #1a73e8;
+}
+
+.metrics-section .card .card__link:hover {
+    color: #1557b0;
+}
+
+.metrics-section .section__title {
+    border-bottom-color: #1a73e8;
+}
+
+/* --- Performance section (Green) --- */
+
+.performance-section .card .card__title {
+    color: #34a853;
+}
+
+.performance-section .card .card__link {
+    color: #34a853;
+}
+
+.performance-section .card .card__link:hover {
+    color: #2d8f47;
+}
+
+.performance-section .section__title {
+    border-bottom-color: #34a853;
+}
+
+/* --- Activity section (Red) --- */
+
+.activity-section .card .card__title {
+    color: #ea4335;
+}
+
+.activity-section .card .card__link {
+    color: #ea4335;
+}
+
+.activity-section .card .card__link:hover {
+    color: #c5362a;
+}
+
+.activity-section .section__title {
+    border-bottom-color: #ea4335;
+}

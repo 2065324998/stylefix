@@ -1,0 +1,18 @@
+[project]
+name = "stylefix-dashboard"
+version = "0.1.0"
+description = "Admin dashboard with component-based CSS theming"
+requires-python = ">=3.10"
+dependencies = [
+    "flask>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "playwright>=1.40",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"

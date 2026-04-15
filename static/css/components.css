@@ -1,0 +1,206 @@
+/* Component styles — cards, modals, toasts, navigation
+ *
+ * Scoped to #content for specificity control within the main
+ * content area. This prevents component styles from leaking
+ * into the sidebar or header regions.
+ */
+
+/* --- Cards --- */
+
+#content .card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow var(--transition-base);
+}
+
+#content .card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+#content .card .card__title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-gray-700);
+    line-height: 1.5;
+    margin: 0 0 0.25rem 0;
+}
+
+#content .card .card__value {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin: 0.25rem 0;
+    line-height: 1.2;
+}
+
+#content .card .card__trend {
+    font-size: var(--font-size-xs);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 500;
+}
+
+#content .card .card__trend--up {
+    color: #059669;
+}
+
+#content .card .card__trend--down {
+    color: #dc2626;
+}
+
+#content .card .card__trend--neutral {
+    color: var(--color-gray-400);
+}
+
+#content .card .card__body {
+    padding: 0;
+    color: var(--color-gray-600);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
+#content .card .card__footer {
+    border-top: 1px solid var(--color-gray-200);
+    padding-top: 0.75rem;
+    margin-top: auto;
+}
+
+#content .card .card__link {
+    color: var(--color-gray-500);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+}
+
+#content .card .card__link:hover {
+    color: var(--color-gray-700);
+    text-decoration: underline;
+}
+
+/* --- Section titles --- */
+
+#content .section__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-gray-800);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-gray-200);
+}
+
+/* --- Modal --- */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+}
+
+.modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.modal__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-gray-900);
+}
+
+.modal__close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-gray-400);
+    padding: 0.25rem;
+    line-height: 1;
+}
+
+.modal__close:hover {
+    color: var(--color-gray-700);
+}
+
+.modal__body {
+    padding: 1.5rem;
+    color: var(--color-gray-600);
+    line-height: 1.6;
+}
+
+/* --- Toast notifications --- */
+
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.toast {
+    background: #323232;
+    color: var(--color-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    min-width: 280px;
+    font-size: var(--font-size-sm);
+    animation: toast-in 0.3s ease-out;
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Announcement bar --- */
+
+.announcement-bar {
+    background: #4a6fa5;
+    color: var(--color-white);
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+}
+
+.announcement-bar a {
+    color: var(--color-white);
+    text-decoration: underline;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
