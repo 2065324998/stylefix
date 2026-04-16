@@ -31,8 +31,19 @@ def generate_palette(accent_hex):
     - 'border': muted lighter variant for decorative borders
 
     Colors are derived using HSL adjustments:
-    - Hover: reduce lightness by 15 percentage points
-    - Border: set lightness to 0.75, scale saturation to 40% of original
+
+    Hover color:
+    - Reduce lightness by 15 percentage points
+    - Increase saturation proportionally to compensate for darkening:
+      new_sat = min(1.0, old_sat * (1 + lightness_decrease / old_lightness))
+      This keeps dark colors vivid rather than muddy.
+    - Preserve hue
+
+    Border color:
+    - Set lightness to 0.75 (light pastel)
+    - Scale saturation to 40% of original
+    - Rotate hue by +5 degrees to compensate for the
+      Helmholtz-Kohlrausch perceptual shift at high lightness
     """
     r, g, b = hex_to_rgb(accent_hex)
 
