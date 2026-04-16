@@ -4,6 +4,7 @@ from flask import render_template, jsonify
 
 from .models import DashboardData
 from .config import Config
+from .theme import compile_theme
 
 
 def register_routes(app):
@@ -18,6 +19,7 @@ def register_routes(app):
             activities=data["activities"],
             announcement=Config.ANNOUNCEMENT,
             sections=Config.SECTIONS,
+            theme_css=compile_theme(),
         )
 
     @app.route("/api/metrics")
