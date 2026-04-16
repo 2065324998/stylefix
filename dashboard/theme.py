@@ -83,7 +83,7 @@ def generate_section_css(section_name, accent_hex):
     color: {palette['base']};
 }}
 
-{scope} .card .card__link:hover {{
+{scope} .card__footer > .card__link:hover {{
     color: {palette['hover']};
 }}
 
